@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise');
-const bluebird = require('bluebird');
+// const bluebird = require('bluebird');
 require('dotenv').config();
 
 const connection = mysql.createPool({
@@ -7,7 +7,7 @@ const connection = mysql.createPool({
 	user: process.env.user,
 	password: process.env.password,
 	database: process.env.database,
-	Promise: bluebird
+	// Promise: bluebird
 });
 
 module.exports = connection;
