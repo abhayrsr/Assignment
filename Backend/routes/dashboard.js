@@ -12,7 +12,9 @@ try {
       try {
         const [rows, fields] = await database.query(query, [userId]);
         if (rows.length > 0) {
-          return response.status(status.OK).json({ data: rows });
+          const query= `select * from timing where user_id =?`;
+          const[row, fields] = await database.query(query, [rows[0].user_id])
+          return response.status(status.OK).json({ data: row, username: rows[0].username });
         } else {
           return response.status(status.BAD_REQUEST).json({ error: "Incorrect user_id" });
         }
